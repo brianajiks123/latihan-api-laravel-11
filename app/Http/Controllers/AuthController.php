@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -58,6 +59,19 @@ class AuthController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'User Login Profile',
+            'data' => $user_data,
+            'id' => auth()->user()->id
+        ], 200);
+    }
+
+    // User Resources
+    public function userResource()
+    {
+        $user_data = new UserResource(User::findOrFail(auth()->user()->id));
+
+        return response()->json([
+            'status' => true,
+            'message' => 'User Login Profile using API Resource',
             'data' => $user_data,
             'id' => auth()->user()->id
         ], 200);
