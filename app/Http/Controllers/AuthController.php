@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -87,6 +88,19 @@ class AuthController extends Controller
             'message' => 'User Login Profile using API Resource as Collection',
             'data' => $user_data,
             'id' => ''
+        ], 200);
+    }
+
+    // User Collection
+    public function userCollection()
+    {
+        $user_data = new UserCollection(User::all());
+
+        return response()->json([
+            'status' => true,
+            'message' => 'User Login Profile using API Resource Collection',
+            'data' => $user_data,
+            'id' => auth()->user()->id
         ], 200);
     }
 
