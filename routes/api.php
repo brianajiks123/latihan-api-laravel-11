@@ -15,6 +15,7 @@ Route::group([
     Route::get('/userprofile', [AuthController::class, 'userProfile']);
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/userresource', [AuthController::class, 'userResource']);
+    Route::get('/userresourcecollection', [AuthController::class, 'userResourceCollection']);
 });
 
 // Posts

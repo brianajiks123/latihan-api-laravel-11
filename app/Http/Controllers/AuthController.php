@@ -77,6 +77,19 @@ class AuthController extends Controller
         ], 200);
     }
 
+    // User Resources as Collection
+    public function userResourceCollection()
+    {
+        $user_data = UserResource::collection(User::all());
+
+        return response()->json([
+            'status' => true,
+            'message' => 'User Login Profile using API Resource as Collection',
+            'data' => $user_data,
+            'id' => ''
+        ], 200);
+    }
+
     // Logout
     public function logout()
     {
